@@ -1,6 +1,14 @@
-# Fab Academy 2026 Documentation Website
+# discuss
+## 0201
+1. final project think:need conecpt,sketch(hand writing or AIGC) and introduce(ddl 0203)
+2. basic web optimize
+3. fusion 360 [install](https://www.autodesk.com/products/fusion-360/overview) and register (email to fab )
 
-A modern, responsive documentation website for Fab Academy 2026 with dynamic interactions.
+
+
+# L1ILe · Fab Academy 2026 Documentation
+
+A modern, responsive documentation website for Fab Academy 2026 — Personal site by L1ILe.
 
 ## Features
 
