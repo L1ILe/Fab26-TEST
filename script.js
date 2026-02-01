@@ -5,12 +5,36 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
+    initTheme();
     initNavigation();
     initParticles();
     initScrollEffects();
     initCardAnimations();
     initSmoothScroll();
 });
+
+// ============================================
+// Theme Toggle - Light (Pearl) / Dark (Aurora)
+// ============================================
+function initTheme() {
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                root.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                root.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+}
 
 // ============================================
 // Navigation

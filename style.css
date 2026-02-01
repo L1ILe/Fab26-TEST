@@ -116,6 +116,26 @@ img {
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     transition: var(--transition-normal);
+    /* 渐变过渡：底部边缘淡出，与下方内容融合 */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+    pointer-events: none;
+}
+html[data-theme="dark"] .navbar {
+    background: rgba(10, 10, 12, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+html[data-theme="dark"] .navbar::after {
+    background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85), transparent);
 }
 
 .nav-container {
@@ -243,6 +263,55 @@ img {
     background: var(--color-bg-primary);
     padding: var(--spacing-3xl) var(--spacing-md);
     margin-top: 44px;
+    overflow: hidden;
+}
+/* Hero 区域渐变过渡 */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* 浅色：云母炫彩渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(255, 200, 220, 0.1) 0%,
+            rgba(200, 220, 255, 0.08) 40%,
+            rgba(220, 200, 255, 0.06) 70%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 800px 600px at 50% 20%, rgba(255, 240, 250, 0.12) 0%, transparent 60%);
+    opacity: 0.7;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+html[data-theme="dark"] .hero::before {
+    /* 深色：极光渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(0, 150, 255, 0.15) 0%,
+            rgba(100, 80, 255, 0.1) 40%,
+            rgba(0, 180, 255, 0.08) 70%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 900px 700px at 50% 20%, rgba(0, 120, 255, 0.12) 0%, transparent 60%);
+    opacity: 0.6;
+}
+html[data-theme="dark"] .hero::after {
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -629,6 +698,57 @@ section {
     padding-bottom: var(--spacing-xl);
     background: var(--color-bg-primary);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+/* 页面头部渐变过渡：从顶部到底部，与下方内容融合 */
+.page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* 浅色：云母炫彩渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(255, 200, 220, 0.08) 0%,
+            rgba(200, 220, 255, 0.06) 30%,
+            rgba(220, 200, 255, 0.04) 60%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(255, 240, 250, 0.1) 0%, transparent 50%);
+    opacity: 0.6;
+}
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    pointer-events: none;
+    z-index: 0;
+    /* 底部渐变淡出，与下方内容融合 */
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+html[data-theme="dark"] .page-header::before {
+    /* 深色：极光渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(0, 150, 255, 0.12) 0%,
+            rgba(100, 80, 255, 0.08) 30%,
+            rgba(0, 180, 255, 0.06) 60%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 700px 500px at 50% 0%, rgba(0, 120, 255, 0.1) 0%, transparent 50%);
+    opacity: 0.5;
+}
+html[data-theme="dark"] .page-header::after {
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+.page-header > * {
+    position: relative;
+    z-index: 1;
 }
 
 .page-tag {
@@ -1310,6 +1430,56 @@ section {
     padding-top: calc(44px + var(--spacing-xl));
     padding-bottom: var(--spacing-xl);
     background: var(--color-bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+/* Week 详情页头部渐变过渡 */
+.week-detail-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* 浅色：云母炫彩渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(255, 200, 220, 0.08) 0%,
+            rgba(200, 220, 255, 0.06) 35%,
+            rgba(220, 200, 255, 0.04) 65%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(255, 240, 250, 0.1) 0%, transparent 50%);
+    opacity: 0.6;
+}
+.week-detail-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+html[data-theme="dark"] .week-detail-header::before {
+    /* 深色：极光渐变 */
+    background: 
+        linear-gradient(to bottom, 
+            rgba(0, 150, 255, 0.12) 0%,
+            rgba(100, 80, 255, 0.08) 35%,
+            rgba(0, 180, 255, 0.06) 65%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 700px 500px at 50% 0%, rgba(0, 120, 255, 0.1) 0%, transparent 50%);
+    opacity: 0.5;
+}
+html[data-theme="dark"] .week-detail-header::after {
+    background: linear-gradient(to bottom, transparent, var(--color-bg-primary));
+}
+.week-detail-header > * {
+    position: relative;
+    z-index: 1;
 }
 
 .week-nav {
@@ -1679,4 +1849,195 @@ section {
     background: var(--color-accent);
     z-index: 9998;
     transition: width 0.1s;
+}
+
+/* ============================================
+   Theme Toggle - Light (Pearl) / Dark (Aurora)
+   ============================================ */
+
+/* Theme toggle button - top left */
+.theme-toggle {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 10000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: saturate(180%) blur(12px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.theme-toggle:hover {
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+.theme-toggle svg {
+    width: 22px;
+    height: 22px;
+    color: var(--color-text-primary);
+}
+.theme-toggle .icon-sun { display: block; }
+.theme-toggle .icon-moon { display: none; }
+
+/* Dark theme variables (global + week detail page vars) - use html so theme applies on all pages before paint */
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+    --color-text-primary: #f5f5f7;
+    --color-text-secondary: #a1a1a6;
+    --color-link: #5eb3f6;
+    --color-link-hover: #7ec8ff;
+    --color-bg-primary: #0a0a0c;
+    --color-bg-secondary: #12121a;
+    --color-bg-tertiary: #16161f;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-accent: #5eb3f6;
+    --color-accent-hover: #7ec8ff;
+    --status-complete: #34c759;
+    --status-progress: #ff9500;
+    --status-pending: #8e8e93;
+    --bg-primary: #0a0a0c;
+    --bg-secondary: #12121a;
+    --bg-card: #16161f;
+    --bg-card-hover: #1a1a24;
+    --bg-tertiary: #16161f;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --text-muted: #8e8e93;
+    --klein-blue-light: #5eb3f6;
+}
+html[data-theme="dark"] .theme-toggle {
+    background: rgba(20, 20, 28, 0.9);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+html[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+html[data-theme="dark"] .theme-toggle svg { color: #f5f5f7; }
+
+/* ===== 背景动效：浅色 = 云母炫彩，深色 = 极光若隐若现 ===== */
+@keyframes micaFlow {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        filter: blur(0px);
+    }
+    25%  { 
+        opacity: 0.5; 
+        transform: translate(30px, -25px) scale(1.15) rotate(1deg);
+        filter: blur(1px);
+    }
+    50%  { 
+        opacity: 0.4; 
+        transform: translate(-20px, 20px) scale(0.95) rotate(-0.5deg);
+        filter: blur(0.5px);
+    }
+    75%  { 
+        opacity: 0.45; 
+        transform: translate(25px, 15px) scale(1.08) rotate(0.8deg);
+        filter: blur(0.8px);
+    }
+}
+@keyframes auroraFade {
+    0%, 100% { 
+        opacity: 0.25; 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        filter: blur(2px);
+    }
+    25%  { 
+        opacity: 0.45; 
+        transform: translate(-20px, 25px) scale(1.2) rotate(1.5deg);
+        filter: blur(1px);
+    }
+    50%  { 
+        opacity: 0.3; 
+        transform: translate(25px, -20px) scale(0.9) rotate(-1deg);
+        filter: blur(2.5px);
+    }
+    75%  { 
+        opacity: 0.4; 
+        transform: translate(-15px, -25px) scale(1.1) rotate(0.8deg);
+        filter: blur(1.5px);
+    }
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+/* 云母炫彩背景层：多层渐变营造炫彩质感 */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -10%;
+    pointer-events: none;
+    z-index: -1;
+    /* 浅色：云母炫彩效果 - 粉、蓝、紫、青等多色渐变 */
+    background:
+        radial-gradient(ellipse 400px 300px at 20% 30%, rgba(255, 200, 220, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 350px 400px at 75% 60%, rgba(200, 220, 255, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 380px 320px at 45% 15%, rgba(220, 200, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 320px 380px at 85% 40%, rgba(200, 255, 240, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 360px 350px at 25% 75%, rgba(255, 230, 200, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 340px 360px at 60% 85%, rgba(240, 200, 255, 0.09) 0%, transparent 60%);
+    animation: micaFlow 15s ease-in-out infinite;
+    filter: blur(40px);
+}
+body::after {
+    content: '';
+    position: fixed;
+    inset: -10%;
+    pointer-events: none;
+    z-index: -1;
+    /* 浅色：第二层云母，不同位置和颜色 */
+    background:
+        radial-gradient(ellipse 300px 400px at 35% 50%, rgba(255, 210, 230, 0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 400px 300px at 70% 20%, rgba(210, 230, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 350px 380px at 10% 75%, rgba(230, 210, 255, 0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 380px 320px at 55% 45%, rgba(255, 240, 210, 0.09) 0%, transparent 60%);
+    animation: micaFlow 18s ease-in-out infinite reverse;
+    filter: blur(50px);
+}
+/* 深色模式：极光若隐若现 */
+html[data-theme="dark"] body::before {
+    background:
+        radial-gradient(ellipse 450px 350px at 20% 30%, rgba(0, 150, 255, 0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 450px at 75% 65%, rgba(100, 80, 255, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 380px 400px at 45% 15%, rgba(0, 200, 255, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 420px 380px at 85% 40%, rgba(80, 120, 255, 0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 360px 420px at 15% 75%, rgba(0, 180, 255, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 360px at 60% 85%, rgba(120, 100, 255, 0.14) 0%, transparent 70%);
+    animation: auroraFade 20s ease-in-out infinite;
+    filter: blur(60px);
+}
+html[data-theme="dark"] body::after {
+    background:
+        radial-gradient(ellipse 350px 450px at 35% 55%, rgba(0, 160, 255, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 450px 350px at 65% 25%, rgba(90, 100, 255, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 380px 400px at 25% 80%, rgba(0, 190, 255, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 380px at 50% 50%, rgba(110, 90, 255, 0.1) 0%, transparent 70%);
+    animation: auroraFade 22s ease-in-out infinite reverse;
+    filter: blur(70px);
+}
+
+/* Dark navbar & hero */
+html[data-theme="dark"] .navbar {
+    background: rgba(10, 10, 12, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+html[data-theme="dark"] .hero {
+    background: var(--color-bg-primary);
+}
+html[data-theme="dark"] .dropdown-content {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border);
+}
+html[data-theme="dark"] .nav-menu {
+    background: var(--color-bg-primary);
 }
