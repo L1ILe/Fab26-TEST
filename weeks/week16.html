@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 16: Wildcard Week | Fab Academy 2026</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .week-detail-header { padding-top: calc(70px + var(--spacing-2xl)); padding-bottom: var(--spacing-2xl); background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); }
+        .week-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); }
+        .week-nav a { display: inline-flex; align-items: center; gap: var(--spacing-sm); color: var(--text-secondary); font-size: 0.9rem; transition: var(--transition-fast); }
+        .week-nav a:hover { color: var(--klein-blue-light); }
+        .week-nav svg { width: 18px; height: 18px; }
+        .week-title-block { text-align: center; }
+        .week-number-large { font-size: 4rem; font-weight: bold; color: rgba(0, 47, 167, 0.3); line-height: 1; margin-bottom: var(--spacing-md); }
+        .week-detail-content { padding: var(--spacing-3xl) 0; }
+        .content-block { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--radius-xl); padding: var(--spacing-2xl); margin-bottom: var(--spacing-2xl); }
+        .content-block h2 { color: var(--text-primary); font-size: 1.5rem; margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-md); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .content-block p { color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--spacing-md); }
+        .image-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); margin: var(--spacing-xl) 0; }
+        .gallery-img { aspect-ratio: 16/10; background: var(--bg-tertiary); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+        .week-pagination { display: flex; justify-content: space-between; margin-top: var(--spacing-3xl); padding-top: var(--spacing-2xl); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .pagination-link { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-lg); background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--radius-lg); transition: var(--transition-normal); max-width: 45%; }
+        .pagination-link:hover { background: var(--bg-card-hover); border-color: rgba(0, 47, 167, 0.3); }
+        .pagination-link svg { width: 24px; height: 24px; color: var(--klein-blue-light); }
+        .pagination-text { display: flex; flex-direction: column; }
+        .pagination-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .pagination-title { color: var(--text-primary); font-weight: 500; }
+        .pagination-link.next { flex-direction: row-reverse; text-align: right; margin-left: auto; }
+        .pagination-link.prev { text-align: left; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">FAB</span><span class="logo-year">2026</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown"><a href="../dailywork.html" class="nav-link active">Dailywork</a></li>
+                <li class="nav-item"><a href="../finalproject.html" class="nav-link">Final Project</a></li>
+                <li class="nav-item"><a href="../aboutme.html" class="nav-link">About Me</a></li>
+            </ul>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="week-detail-header">
+            <div class="container">
+                <nav class="week-nav">
+                    <a href="../dailywork.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to All Weeks</a>
+                    <span class="week-status status-pending">Pending</span>
+                </nav>
+                <div class="week-title-block">
+                    <div class="week-number-large">16</div>
+                    <h1 class="page-title">Wildcard Week</h1>
+                    <p class="page-subtitle">Week 16 Assignment</p>
+                </div>
+            </div>
+        </header>
+        <section class="week-detail-content">
+            <div class="container">
+                <div class="content-block">
+                    <h2>Assignment Overview</h2>
+                    <p>Document your work for Week 16: Wildcard Week here.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Process Documentation</h2>
+                    <p>Add your process documentation, images, and files here.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-img"><span>Image 1</span></div>
+                        <div class="gallery-img"><span>Image 2</span></div>
+                        <div class="gallery-img"><span>Image 3</span></div>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>Reflection</h2>
+                    <p>Share your thoughts on this week's learning experience.</p>
+                </div>
+                <div class="week-pagination">
+                    <a href="week15.html" class="pagination-link prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><div class="pagination-text"><span class="pagination-label">Previous Week</span><span class="pagination-title">Interface and Application Programming</span></div></a>
+                    <a href="week17.html" class="pagination-link next"><div class="pagination-text"><span class="pagination-label">Next Week</span><span class="pagination-title">Applications and Implications</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><span class="logo-text">FAB</span><span class="logo-year">2026</span></div>
+                <p class="footer-text">Fab Academy 2026 Documentation</p>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Fab Academy. All rights reserved.</p></div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

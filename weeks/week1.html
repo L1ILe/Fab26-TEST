@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Principles and Practices | Fab Academy 2026</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .week-detail-header {
+            padding-top: calc(70px + var(--spacing-2xl));
+            padding-bottom: var(--spacing-2xl);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+        
+        .week-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .week-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+        
+        .week-nav a:hover {
+            color: var(--klein-blue-light);
+        }
+        
+        .week-nav svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .week-title-block {
+            text-align: center;
+        }
+        
+        .week-number-large {
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgba(0, 47, 167, 0.3);
+            line-height: 1;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .week-detail-content {
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .content-block {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .content-block h2 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-block h3 {
+            color: var(--klein-blue-light);
+            font-size: 1.1rem;
+            margin: var(--spacing-xl) 0 var(--spacing-md);
+        }
+        
+        .content-block p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .content-block ul, .content-block ol {
+            color: var(--text-secondary);
+            margin-left: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .content-block li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .content-block code {
+            background: rgba(0, 47, 167, 0.1);
+            color: var(--klein-blue-light);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content-block pre {
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            overflow-x: auto;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .content-block pre code {
+            background: transparent;
+            padding: 0;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .gallery-img {
+            aspect-ratio: 16/10;
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            overflow: hidden;
+        }
+        
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .assignment-checklist {
+            background: rgba(0, 47, 167, 0.05);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) 0;
+            color: var(--text-secondary);
+        }
+        
+        .checklist-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--status-complete);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .week-pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-3xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-normal);
+            max-width: 45%;
+        }
+        
+        .pagination-link:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 47, 167, 0.3);
+        }
+        
+        .pagination-link svg {
+            width: 24px;
+            height: 24px;
+            color: var(--klein-blue-light);
+        }
+        
+        .pagination-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pagination-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pagination-title {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .pagination-link.next {
+            flex-direction: row-reverse;
+            text-align: right;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">FAB</span>
+                <span class="logo-year">2026</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="../dailywork.html" class="nav-link active">Dailywork</a>
+                    <div class="dropdown-content">
+                        <a href="week1.html">Week 1: Principles and Practices</a>
+                        <a href="week2.html">Week 2: Computer-Aided Design</a>
+                        <a href="week3.html">Week 3: Computer-Controlled Cutting</a>
+                        <a href="week4.html">Week 4: Electronics Production</a>
+                        <a href="week5.html">Week 5: 3D Scanning and Printing</a>
+                        <a href="week6.html">Week 6: Embedded Programming</a>
+                        <a href="week7.html">Week 7: Computer-Controlled Machining</a>
+                        <a href="week8.html">Week 8: Electronics Design</a>
+                        <a href="week9.html">Week 9: Output Devices</a>
+                        <a href="week10.html">Week 10: Mechanical Design</a>
+                        <a href="week11.html">Week 11: Input Devices</a>
+                        <a href="week12.html">Week 12: Molding and Casting</a>
+                        <a href="week13.html">Week 13: Networking and Communications</a>
+                        <a href="week14.html">Week 14: Interface and Application</a>
+                        <a href="week15.html">Week 15: Wildcard Week</a>
+                        <a href="week16.html">Week 16: Applications and Implications</a>
+                        <a href="week17.html">Week 17: Invention and IP</a>
+                        <a href="week18.html">Week 18: Project Development</a>
+                        <a href="week19.html">Week 19: System Integration</a>
+                        <a href="week20.html">Week 20: Final Project Presentation</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="../finalproject.html" class="nav-link">Final Project</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../aboutme.html" class="nav-link">About Me</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="week-detail-header">
+            <div class="container">
+                <nav class="week-nav">
+                    <a href="../dailywork.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to All Weeks
+                    </a>
+                    <span class="week-status status-complete">Completed</span>
+                </nav>
+                <div class="week-title-block">
+                    <div class="week-number-large">01</div>
+                    <h1 class="page-title">Principles and Practices</h1>
+                    <p class="page-subtitle">Project Management and Documentation</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="week-detail-content">
+            <div class="container">
+                <div class="content-block">
+                    <h2>Assignment Overview</h2>
+                    <p>This week focused on planning and sketching a potential final project and working through a git tutorial.</p>
+                    
+                    <div class="assignment-checklist">
+                        <div class="checklist-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Plan and sketch a potential final project</span>
+                        </div>
+                        <div class="checklist-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Work through a git tutorial</span>
+                        </div>
+                        <div class="checklist-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Build a personal site in the class archive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h2>Final Project Ideation</h2>
+                    <p>Document your initial ideas for the final project here. Include sketches, inspiration, and preliminary research.</p>
+                    
+                    <h3>Concept</h3>
+                    <p>Describe your project concept and what problem it solves.</p>
+                    
+                    <h3>Inspiration</h3>
+                    <p>Share what inspired your project idea - could be other projects, problems you've encountered, or technologies you want to explore.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-img">
+                            <span>Sketch 1</span>
+                        </div>
+                        <div class="gallery-img">
+                            <span>Sketch 2</span>
+                        </div>
+                        <div class="gallery-img">
+                            <span>Inspiration Image</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h2>Website Setup</h2>
+                    <p>Documentation of the website setup process.</p>
+                    
+                    <h3>Tools Used</h3>
+                    <ul>
+                        <li>HTML5 and CSS3 for structure and styling</li>
+                        <li>JavaScript for interactive features</li>
+                        <li>Git for version control</li>
+                        <li>GitLab/GitHub for hosting</li>
+                    </ul>
+                    
+                    <h3>Git Commands Used</h3>
+                    <pre><code>git init
+git add .
+git commit -m "Initial commit"
+git push origin main</code></pre>
+                </div>
+
+                <div class="content-block">
+                    <h2>Reflection</h2>
+                    <p>Share your thoughts on the week's learning experience. What challenges did you face? What did you learn? What would you do differently?</p>
+                </div>
+
+                <div class="week-pagination">
+                    <div></div>
+                    <a href="week2.html" class="pagination-link next">
+                        <div class="pagination-text">
+                            <span class="pagination-label">Next Week</span>
+                            <span class="pagination-title">Computer-Aided Design</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FAB</span>
+                    <span class="logo-year">2026</span>
+                </div>
+                <p class="footer-text">Fab Academy 2026 Documentation</p>
+                <div class="footer-links">
+                    <a href="https://fabacademy.org/" target="_blank">Fab Academy</a>
+                    <a href="https://fablabs.io/" target="_blank">Fab Labs</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fab Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
