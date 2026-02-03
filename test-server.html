@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Test - Fab Academy 2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 { color: #002FA7; }
+        .link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #002FA7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .link:hover {
+            background: #4169E1;
+        }
+        .info {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ 服务器运行正常！</h1>
+    <div class="info">
+        <p>如果您能看到这个页面，说明本地服务器已经成功启动。</p>
+    </div>
+    
+    <h2>快速链接：</h2>
+    <a href="index.html" class="link">🏠 主页 (index.html)</a>
+    <a href="weeks/week1.html" class="link">📝 Week 1 - Principles and Practices</a>
+    <a href="finalproject.html" class="link">🎯 Final Project</a>
+    <a href="aboutme.html" class="link">👤 About Me</a>
+    <a href="dailywork.html" class="link">📚 Daily Work</a>
+    
+    <div class="info" style="margin-top: 30px;">
+        <h3>如何启动服务器：</h3>
+        <p>在终端中运行：</p>
+        <code style="background: #000; padding: 10px; display: block; border-radius: 5px;">
+            cd /Users/lilee/Desktop/fab2026/Fab26-TEST<br>
+            python3 -m http.server 8888
+        </code>
+        <p style="margin-top: 10px;">然后在浏览器中访问：<strong>http://localhost:8888</strong></p>
+    </div>
+</body>
+</html>

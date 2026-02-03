@@ -3,7 +3,7 @@
 # Fab Academy 2026 本地服务器启动脚本
 # 使用方法: ./start-server.sh
 
-PORT=8080
+PORT=8888
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "🚀 正在启动 Fab Academy 2026 本地服务器..."
