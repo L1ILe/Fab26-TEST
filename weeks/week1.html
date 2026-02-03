@@ -18,9 +18,10 @@
         }
         
         .week-title-block {
-            max-width: 1200px;
+            max-width: 680px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
+            text-align: center;
         }
         
         .week-nav {
@@ -58,13 +59,6 @@
             height: 18px;
         }
         
-        .week-title-block {
-            text-align: center;
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-        
         .page-title {
             font-size: 56px;
             font-weight: 600;
@@ -85,15 +79,15 @@
         .week-number-large {
             font-size: 80px;
             font-weight: 700;
-            color: var(--color-text-secondary);
+            color: var(--color-accent);
             line-height: 1;
             margin-bottom: var(--spacing-md);
-            opacity: 0.3;
+            opacity: 0.6;
             letter-spacing: -0.03em;
         }
         html[data-theme="dark"] .week-number-large {
-            color: rgba(245, 245, 247, 0.25);
-            opacity: 1;
+            color: var(--color-accent);
+            opacity: 0.7;
         }
         
         .week-detail-content {
@@ -152,6 +146,81 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            position: relative;
+        }
+        
+        .content-block h2:not(:first-of-type) {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        html[data-theme="dark"] .content-block h2:not(:first-of-type) {
+            border-top-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        .tabs-container {
+            margin-top: var(--spacing-xl);
+        }
+        
+        .cursor-icon {
+            margin-left: 2px;
+        }
+        
+        .tabs-header {
+            display: flex;
+            gap: var(--spacing-xs);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: var(--spacing-lg);
+        }
+        html[data-theme="dark"] .tabs-header {
+            border-bottom-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        .tab-button {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            margin-bottom: -2px;
+            position: relative;
+        }
+        
+        .tab-button:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .tab-button.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+        html[data-theme="dark"] .tab-button.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         html[data-theme="dark"] .content-block h2 {
             color: #f5f5f7;
@@ -280,17 +349,49 @@
             margin: var(--spacing-xl) 0;
         }
         
+        .image-gallery.centered {
+            display: flex;
+            justify-content: center;
+            margin: var(--spacing-lg) 0;
+        }
+        
         .gallery-img {
-            aspect-ratio: 16/10;
             background: var(--color-bg-tertiary);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: var(--radius-lg);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             color: var(--text-muted);
             overflow: hidden;
+            padding: var(--spacing-sm);
         }
+        
+        .gallery-img.compact {
+            max-width: 70%;
+            width: fit-content;
+        }
+        
+        .gallery-img img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            display: block;
+        }
+        
+        .gallery-img.compact img {
+            max-width: 100%;
+        }
+        
+        .gallery-img p {
+            text-align: center;
+            margin-top: var(--spacing-sm);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
         html[data-theme="dark"] .gallery-img {
             background: #2f2f2f;
             border-color: rgba(255, 255, 255, 0.12);
@@ -303,11 +404,6 @@
             transform: scale(1.02);
         }
         
-        .gallery-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
         
         .assignment-checklist {
             background: rgba(0, 47, 167, 0.05);
@@ -437,6 +533,120 @@
             text-align: right;
             margin-left: auto;
         }
+        
+        .content-block table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        html[data-theme="dark"] .content-block table {
+            background: #2f2f2f;
+        }
+        
+        .content-block table thead {
+            background: rgba(0, 113, 227, 0.1);
+        }
+        html[data-theme="dark"] .content-block table thead {
+            background: rgba(135, 206, 235, 0.15);
+        }
+        
+        .content-block table th {
+            padding: var(--spacing-md);
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            border-bottom: 2px solid rgba(0, 113, 227, 0.2);
+        }
+        html[data-theme="dark"] .content-block table th {
+            border-bottom-color: rgba(135, 206, 235, 0.3);
+        }
+        
+        .content-block table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--color-text-secondary);
+        }
+        html[data-theme="dark"] .content-block table td {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            color: #d1d1d6;
+        }
+        
+        .content-block table tbody tr:hover {
+            background: rgba(0, 113, 227, 0.05);
+        }
+        html[data-theme="dark"]         .content-block table tbody tr:hover {
+            background: rgba(135, 206, 235, 0.1);
+        }
+        
+        .env-config-box {
+            background: rgba(0, 113, 227, 0.1);
+            border-left: 4px solid var(--color-accent);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            border-radius: var(--radius-md);
+        }
+        html[data-theme="dark"] .env-config-box {
+            background: rgba(135, 206, 235, 0.15);
+            border-left-color: var(--color-accent);
+        }
+        
+        .env-config-box h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+            font-size: 20px;
+        }
+        
+        .env-config-box p {
+            margin-bottom: var(--spacing-xs);
+            font-size: 16px;
+        }
+        
+        .env-config-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .env-config-box strong {
+            color: var(--color-text-primary);
+        }
+        
+        .env-config-box .highlight {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .env-config-box a {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+        
+        .cursor-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-left: 2px;
+            margin-right: 4px;
+            display: inline-block;
+            transform: translateY(-0.5px);
+        }
+        
+        .gemini-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-left: 2px;
+            display: inline-block;
+            transform: translateY(-0.5px);
+        }
+        
+        h4 .cursor-icon,
+        h4 .gemini-icon {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -563,85 +773,198 @@
                     <h2>📋 Assignment Process</h2>
                     <p>This section documents the step-by-step process of completing this week's assignment.</p>
                     
-                    <h3>💬 Discussion - February 1st</h3>
-                    <ul>
-                        <li><strong>🎯 Final project thinking:</strong> Need concept, sketch (handwriting or AIGC) and introduction (deadline: February 3rd)</li>
-                        <li><strong>⚡ Basic web optimization</strong></li>
-                        <li><strong>🔧 Fusion 360:</strong> <a href="https://www.autodesk.com/products/fusion-360/overview" target="_blank">Install</a> and register (email to fab)</li>
-                    </ul>
-                    
-                    <h3>🌐 Website Setup Process</h3>
-                    <p>Documentation of the website setup process.</p>
-                    
-                    <h4>🛠️ Tools Used</h4>
-                    <ul>
-                        <li><strong>GitHub</strong> - Version control and hosting</li>
-                        <li><strong>Cursor</strong> - Code editor and development environment</li>
-                        <li><strong>AI Tools</strong> - Used AI assistance to solve problems:
-                            <ul>
-                                <li>Google Gemini - For problem-solving and content generation</li>
-                                <li>Cursor AI - Built-in AI assistant for code completion and debugging</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
-                    <h4>💻 Git Commands Used</h4>
-                    <pre><code>git init
-git add .
-git commit -m "Initial commit"
-git push origin main</code></pre>
-                </div>
-
-                <!-- 作业结果 -->
-                <div class="content-block">
-                    <h2>✅ Assignment Results</h2>
-                    <p>This section showcases the final outcomes and deliverables of this week's assignment.</p>
-                    
-                    <h3>✅ Completed Tasks</h3>
-                    <ul>
-                        <li>✅ Planned and sketched a potential final project</li>
-                        <li>✅ Completed git tutorial</li>
-                        <li>✅ Built personal site in the class archive</li>
-                    </ul>
-                    
-                    <h3>📦 Final Deliverables</h3>
-                    <p>Document your final deliverables here. Include screenshots, files, or links to your work.</p>
-                    
-                    <div class="image-gallery">
-                        <div class="gallery-img">
-                            <span>Final Project Sketch</span>
+                    <div class="tabs-container">
+                        <div class="tabs-header">
+                            <button class="tab-button active" data-tab="website-development">Website Development</button>
+                            <button class="tab-button" data-tab="image-management">Image Management</button>
                         </div>
-                        <div class="gallery-img">
-                            <span>Website Screenshot</span>
+                        
+                        <div class="tab-content active" id="tab-website-development">
+                            <div class="env-config-box">
+                                <h3>🖥️ Environment Configuration</h3>
+                                <p><strong>Operating System:</strong> <span class="highlight">Mac</span></p>
+                                <p><strong>Environment Setup Software:</strong> <span class="highlight">Node.js</span></p>
+                                <p><strong>Download:</strong> <a href="https://nodejs.org/en" target="_blank">https://nodejs.org/en</a></p>
+                                <p><strong>Tools Used:</strong> Cursor<img src="../assets/app-icon-3d-dark-4237599b-bdfe-4911-8735-ad8e8506fd9f.png" alt="Cursor" class="cursor-icon">, Gemini<img src="../assets/gemini_icon-logo_brandlogos.net_aacx5-16f8cd89-585d-4906-9711-6b80eeb93339.png" alt="Gemini" class="cursor-icon"></p>
+                            </div>
+                            
+                            <h3>Stage 1</h3>
+                            <h4>Create Repository</h4>
+                            <ul>
+                                <li>Open <code>github</code>, register, and create a new <code>repository</code></li>
+                                <li>After naming, go to <code>settings</code>, <code>pages</code>, select <code>main</code>, and create a static page</li>
+                            </ul>
+                            
+                            <h4>Download noteis to create environment</h4>
+                            
+                            <h4>Enter cursor, open the folder created on desktop</h4>
+                            
+                            <h4>Associate cursor with github</h4>
+                            
+                            <h4>Set your GitHub username</h4>
+                            <pre><code>git config --global user.name "your username"</code></pre>
+                            
+                            <h4>Set your GitHub registered email</h4>
+                            <pre><code>git config --global user.email "your_email@gmail.com"</code></pre>
+                            
+                            <h3>Stage 2</h3>
+                            <ol>
+                                <li><strong>Enter the folder:</strong> In the <code>Cursor</code> terminal, ensure the path is correct.</li>
+                                <li><strong>Initialize repository:</strong> <code>git init</code></li>
+                                <li><strong>Stage and commit files:</strong>
+                                    <pre><code>git add .
+git commit -m "version number"
+git push origin main</code></pre>
+                                </li>
+                            </ol>
+                            
+                            <h3>Stage 3: GitHub Remote Association</h3>
+                            
+                            <h4>Generate Token</h4>
+                            <ul>
+                                <li>Go to GitHub → Settings → Developer settings → Tokens (classic) → Generate new token</li>
+                                <li>Check <code>repo</code> permission, save the generated <code>ghp...</code> string</li>
+                            </ul>
+                            
+                            <h4>1. Associate remote address</h4>
+                            <p>The address here should include your Token, so you won't need to enter your password repeatedly later.</p>
+                            <pre><code>git remote add origin https://YOUR_TOKEN@github.com/your_username/your_repository_name.git</code></pre>
+                            
+                            <h4>2. Set main branch and push to cloud</h4>
+                            <pre><code>git branch -M main
+git push -u origin main --force</code></pre>
+                            
+                            <h3>Stage 4</h3>
+                            <p>I used <code>cursor</code>'s AI with the following prompt:</p>
+                            <pre><code>I now want to create a FabAcademy 2026 personal website, 
+style reference apple.com, needs to include Home, Dailywork, 
+Finalproject, Aboutme, where Dailywork has 20 assignments inside, 
+and needs two modes, dark mode and light mode, help me generate it.</code></pre>
+                            
+                            <div class="image-gallery">
+                                <div class="gallery-img">
+                                    <img src="../assets/Screenshot_2026-02-03_at_15.47.58-4bbfd6c2-4f98-49c1-8f4f-8daac055b610.png" alt="Cursor AI Prompt">
+                                    <p>Cursor Generation Interface</p>
+                                </div>
+                                <div class="gallery-img">
+                                    <img src="../assets/Screenshot_2026-02-03_at_15.49.47-a31a3708-408e-4427-a9de-f08d0862d768.png" alt="Website Preview">
+                                    <p>Prompt Generation Result</p>
+                                </div>
+                            </div>
+                            
+                            <p>Subsequently used <code>gemini</code> for code troubleshooting, and continued to use <code>cursor</code> for optimization.</p>
+                            
+                            <h4>After completion, perform version upload</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Steps</th>
+                                        <th>Command</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1. Record changes</td>
+                                        <td><code>git add .</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. Write commit message</td>
+                                        <td><code>git commit -m "update description"</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. Send to cloud</td>
+                                        <td><code>git push origin main</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="tab-content" id="tab-image-management">
+                            <h3>🖼️ Image Management</h3>
+                            <p>This section covers the process of managing images for the website using PicGo and GitHub.</p>
+                            
+                            <h4>Step 1: Download PicGo</h4>
+                            <p>Download PicGo from: <a href="https://github.com/Molunerfinn/PicGo" target="_blank">https://github.com/Molunerfinn/PicGo</a></p>
+                            <p>Install PicGo on your Mac system.</p>
+                            
+                            <div class="image-gallery centered">
+                                <div class="gallery-img compact">
+                                    <img src="../assets/picgo-interface.png" alt="PicGo Interface">
+                                    <p>PicGo Application Interface</p>
+                                </div>
+                            </div>
+                            
+                            <h4>Step 2: Create GitHub Repository for Image Storage</h4>
+                            <p>Go to GitHub and create a new repository named <code>Imagestorage</code> (or any name you prefer).</p>
+                            <ul>
+                                <li>Make sure the repository is set to <code>Public</code> if you want to access images via public URLs</li>
+                                <li>Initialize with a README file (optional)</li>
+                            </ul>
+                            
+                            <div class="image-gallery centered">
+                                <div class="gallery-img compact">
+                                    <img src="../assets/github-imagestorage-repo.png" alt="GitHub Imagestorage Repository">
+                                    <p>GitHub Imagestorage Repository</p>
+                                </div>
+                            </div>
+                            
+                            <h4>Step 3: Generate Personal Access Token</h4>
+                            <p>Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)</p>
+                            <ul>
+                                <li>Click "Generate new token (classic)"</li>
+                                <li>Give it a descriptive name (e.g., "PicGo Image Upload")</li>
+                                <li>Select the <code>repo</code> scope/permission</li>
+                                <li>Click "Generate token"</li>
+                                <li><strong>Important:</strong> Copy the token immediately - you won't be able to see it again!</li>
+                            </ul>
+                            
+                            <h4>Step 4: Configure PicGo</h4>
+                            <p>Open PicGo and configure it with the following settings:</p>
+                            <ol>
+                                <li>Go to <code>PicGo Settings</code> → <code>Picture Bed</code></li>
+                                <li>Select <code>GitHub</code> as your picture bed</li>
+                                <li>Fill in the configuration:
+                                    <ul>
+                                        <li><strong>Repository:</strong> <code>your_username/Imagestorage</code></li>
+                                        <li><strong>Branch:</strong> <code>main</code> (or <code>master</code>)</li>
+                                        <li><strong>Token:</strong> Paste your GitHub Personal Access Token</li>
+                                        <li><strong>Storage Path:</strong> <code>img/</code> (optional, for organizing images)</li>
+                                        <li><strong>Custom Domain:</strong> Leave empty or use GitHub Pages URL if configured</li>
+                                    </ul>
+                                </li>
+                                <li>Click "Confirm" or "Apply" to save settings</li>
+                            </ol>
+                            
+                            <div class="image-gallery centered">
+                                <div class="gallery-img compact">
+                                    <img src="../assets/picgo-github-settings.png" alt="PicGo GitHub Settings">
+                                    <p>PicGo GitHub Settings Configuration</p>
+                                </div>
+                            </div>
+                            
+                            <h4>Step 5: Upload Images and Generate HTML Links</h4>
+                            <p>Once configured, you can upload images using PicGo:</p>
+                            <ol>
+                                <li>Drag and drop images into PicGo, or click "Upload" to select images</li>
+                                <li>PicGo will automatically upload images to your GitHub repository</li>
+                                <li>After upload, PicGo will copy the image URL to your clipboard</li>
+                                <li>Use the URL in your HTML code: <code>&lt;img src="IMAGE_URL" alt="description"&gt;</code></li>
+                            </ol>
+                            
+                            <h4>Tips</h4>
+                            <ul>
+                                <li>You can set PicGo to automatically copy URLs after upload in settings</li>
+                                <li>Use descriptive filenames for better organization</li>
+                                <li>Consider organizing images in subfolders using the Storage Path setting</li>
+                                <li>GitHub has a file size limit (usually 100MB per file), so compress large images if needed</li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <h3>📎 Files and Resources</h3>
-                    <ul>
-                        <li><a href="#">📄 Project Sketch (PDF)</a></li>
-                        <li><a href="#">🔗 Website Repository</a></li>
-                    </ul>
                 </div>
 
                 <!-- 作业笔记 -->
                 <div class="content-block">
                     <h2>📝 Assignment Notes</h2>
-                    <p>This section contains learning notes, reflections, and insights gained during this week's work.</p>
-                    
-                    <h3>💡 Key Learnings</h3>
-                    <ul>
-                        <li>Understanding the basics of version control with Git</li>
-                        <li>Setting up a personal documentation website</li>
-                        <li>Planning and conceptualizing a final project</li>
-                    </ul>
-                    
-                    <h3>⚠️ Challenges Faced</h3>
-                    <p>Document any challenges you encountered and how you overcame them.</p>
-                    
-                    <h3>🤔 Reflection</h3>
-                    <p>Share your thoughts on the week's learning experience. What challenges did you face? What did you learn? What would you do differently?</p>
-                    
-                    <h3>📝 Additional Notes</h3>
                     <p>Any additional observations, tips, or resources that might be useful for future reference.</p>
                 </div>
 
@@ -681,5 +1004,26 @@ git push origin main</code></pre>
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        (function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    const targetContent = document.getElementById('tab-' + targetTab);
+                    
+                    if (!targetContent) return;
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    targetContent.classList.add('active');
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

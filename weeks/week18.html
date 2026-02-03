@@ -13,7 +13,19 @@
         .week-nav a:hover { color: var(--klein-blue-light); }
         .week-nav svg { width: 18px; height: 18px; }
         .week-title-block { text-align: center; }
-        .week-number-large { font-size: 4rem; font-weight: bold; color: rgba(0, 47, 167, 0.3); line-height: 1; margin-bottom: var(--spacing-md); }
+        .week-number-large {
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.6;
+            letter-spacing: -0.03em;
+        }
+        html[data-theme="dark"] .week-number-large {
+            color: var(--color-accent);
+            opacity: 0.7;
+        }
         .week-detail-content { padding: var(--spacing-3xl) 0; }
         .content-block { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--radius-xl); padding: var(--spacing-2xl); margin-bottom: var(--spacing-2xl); }
         .content-block h2 { color: var(--text-primary); font-size: 1.5rem; margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
